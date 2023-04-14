@@ -11,3 +11,9 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.search-m{
+  height: 38px;
+}
+.rating i{
+  color: rgb(202, 173, 5);
+}
