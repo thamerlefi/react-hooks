@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import Rating from './Rating'
-const defImg = require('../img/def.jpg')
+import MovieCard from './MovieCard'
+
 
 export default function MovieList({allMovies, setAllMovies,subMovies,setSubMovies}) {
     const [filtByGenres, setFiltByGenres]= useState('All')
@@ -66,19 +66,7 @@ export default function MovieList({allMovies, setAllMovies,subMovies,setSubMovie
         </div>
         {/* ---------------------------------------------------- movies list */}
         {subMovies.map(movie => (
-            <div className="card col-3 m-1" key={movie.id} style={{width: "18rem"}}>
-                <img src={movie.posterURL || defImg} className="card-img-top" alt={movie.title}
-                    style={{height:200, objectFit:'cover'}}/>
-                <div className="card-body">
-                  <h5 className="card-title">{movie.title}</h5>
-                  <Rating movies={movie}/> 
-                  <p className="card-text">{movie.description}</p>
-                  <div className='d-flex align-items-center justify-content-between'>
-                    <a href="/#" className="btn btn-primary">Watch</a>
-                    <p>{movie.genres}</p>
-                  </div>
-                </div>
-            </div>
+            <MovieCard movie ={movie} />
         ))}
         {/* ------------------------------------------------------ movies not found msg */}
       {subMovies.length===0 ? <div className='text-center mt-4'>
