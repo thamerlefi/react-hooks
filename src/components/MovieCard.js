@@ -4,7 +4,7 @@ const defImg = require('../img/def.jpg')
 
 export default function MovieCard({movie}) {
   return (
-    <div className="card col-3 m-1" key={movie.id} style={{width: "18rem"}}>
+    <div className="card col-3 m-1"  style={{width: "18rem"}}>
                 <img src={movie.posterURL || defImg} className="card-img-top" alt={movie.title}
                     style={{height:200, objectFit:'cover'}}/>
                 <div className="card-body">

@@ -66,7 +66,7 @@ export default function MovieList({allMovies, setAllMovies,subMovies,setSubMovie
         </div>
         {/* ---------------------------------------------------- movies list */}
         {subMovies.map(movie => (
-            <MovieCard movie ={movie} />
+            <MovieCard key={movie.id} movie ={movie} />
         ))}
         {/* ------------------------------------------------------ movies not found msg */}
       {subMovies.length===0 ? <div className='text-center mt-4'>
