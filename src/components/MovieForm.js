@@ -70,22 +70,22 @@ export default function MovieForm({allMovies,setAllMovies,subMovies,setSubMovies
         <button type="button" className="btn btn-primary" onClick={()=>{
           // check all required fields
           if(!(title.trim() === '' || desc.trim() === '' ||  rating ===0 || genres === '') ){ 
-            if (allMovies.find(movie => movie.title.toLowerCase()===title.toLowerCase())) setIsMovieExist(true)
-            else {setAllMovies([...allMovies,{ //
-            id: allMovies.length + 1,  //
-            title,             //
-            description: desc,
-            posterURL: pURL,
-            rating ,
-            genres
-          }]) 
-          setTitle('') 
-          setDesc('') 
-          setRating(0) 
-          setGenres('') 
-          setIsShowForm(false)
-          setIsMovieExist(false)
-          setIsInputNotFilled(false)}}
+              if (allMovies.find(movie => movie.title.toLowerCase()===title.toLowerCase())) setIsMovieExist(true)
+              else {setAllMovies([...allMovies,{ //
+                    id: allMovies.length + 1,  //
+                    title,             //
+                    description: desc,
+                    posterURL: pURL,
+                    rating ,
+                    genres
+                  }]) 
+                    setTitle('') 
+                    setDesc('') 
+                    setRating(0) 
+                    setGenres('') 
+                    setIsShowForm(false)
+                    setIsMovieExist(false)
+                    setIsInputNotFilled(false)}}
           else setIsInputNotFilled(true)
         }}>Add</button>
         {/* ---------------------------------------------------------------- cancel button */}
