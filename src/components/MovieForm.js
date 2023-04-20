@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 export default function MovieForm({allMovies,setAllMovies,subMovies,setSubMovies}) {
     const [isShowForm, setIsShowForm] = useState(false)
     const [isInputNotFilled, setIsInputNotFilled] = useState(false)
+    const [ismovieExist,setIsMovieExist] = useState(false)
     const [title, setTitle]= useState('')
     const [desc, setDesc]= useState('')
     const [pURL, setPURL]= useState('')
@@ -14,7 +15,7 @@ export default function MovieForm({allMovies,setAllMovies,subMovies,setSubMovies
     },[allMovies])
 
   return (
-    // ------------------------------------------------------- add new movie button
+    // ------------------------------------------------------- add new movie global button
     <div className='mb-3'>
       {!isShowForm && <button type="button" className="btn btn-success mb-3" 
                         onClick={()=>setIsShowForm(true)}> 
@@ -27,6 +28,7 @@ export default function MovieForm({allMovies,setAllMovies,subMovies,setSubMovies
             <input onChange={(e)=> setTitle(e.target.value)} type="text" placeholder='title...' 
                   className={`form-control ${isInputNotFilled && title.trim() === '' ? 'border border-danger' 
                   : null}`}  />
+                  {ismovieExist && <p className='text-danger'>this movie is already exist</p>}
         </div>
         {/* ------------------------- description input */}
         <div className="mb-3">
@@ -68,7 +70,8 @@ export default function MovieForm({allMovies,setAllMovies,subMovies,setSubMovies
         <button type="button" className="btn btn-primary" onClick={()=>{
           // check all required fields
           if(!(title.trim() === '' || desc.trim() === '' ||  rating ===0 || genres === '') ){ 
-          setAllMovies([...allMovies,{ //
+            if (allMovies.find(movie => movie.title.toLowerCase()===title.toLowerCase())) setIsMovieExist(true)
+            else {setAllMovies([...allMovies,{ //
             id: allMovies.length + 1,  //
             title,             //
             description: desc,
@@ -81,13 +84,15 @@ export default function MovieForm({allMovies,setAllMovies,subMovies,setSubMovies
           setRating(0) 
           setGenres('') 
           setIsShowForm(false)
-          setIsInputNotFilled(false)}
+          setIsMovieExist(false)
+          setIsInputNotFilled(false)}}
           else setIsInputNotFilled(true)
         }}>Add</button>
         {/* ---------------------------------------------------------------- cancel button */}
         <button type="button" className="btn btn-light mx-2" onClick={()=>{
           setIsInputNotFilled(false)
           setIsShowForm(false)
+          setIsMovieExist(false)
           setTitle('') 
           setDesc('') 
           setRating(0) 

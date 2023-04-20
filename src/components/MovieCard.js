@@ -13,7 +13,7 @@ export default function MovieCard({movie}) {
                   <p className="card-text">{movie.description}</p>
                   <div className='d-flex align-items-center justify-content-between'>
                     <a href="/#" className="btn btn-primary">Watch</a>
-                    <p>{movie.genres}</p>
+                    <p style={{position:'relative', top:7}}>{movie.genres}</p>
                   </div>
                 </div>
             </div>

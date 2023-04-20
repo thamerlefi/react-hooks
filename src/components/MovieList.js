@@ -48,7 +48,7 @@ export default function MovieList({allMovies, setAllMovies,subMovies,setSubMovie
             </select>
           </div>
           {/* ------------------------------------------------- search */}
-          <form className="d-flex col-6 search-m" role="search">
+          <form className="d-flex col-6 search-m" style={{marginTop :'15px'}} role="search">
             <input className="form-control me-2 " type="search" value={filtByTitle} 
                   onChange={(e)=>setFiltByTitle(e.target.value)} placeholder='serach by title'/>
           </form>
